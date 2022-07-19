@@ -10,7 +10,7 @@ import os
 # 20220718 changed "samples_file" to "samples"
 samples = pd.read_csv(config["samples"], sep="," , dtype = str).set_index("Run", drop=False)
 
-groups=pd.read_csv(config["comparisons"], sep =",")
+groups=pd.read_csv(config["comparisons"], sep =",", dtype = str).set_index("group", drop=False)
 # control_groups=list(groups.Control_Group)
 # treatment_groups=list(groups.Treatment_Group)
 
