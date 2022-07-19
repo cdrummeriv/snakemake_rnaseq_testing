@@ -1,0 +1,8 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+localrules directive specifies rules that are not present in the Snakefile:
+	run_multiqc
+	run_merge_gene_tpms
+	run_merge_junctions_STAR
+
+Building DAG of jobs...
+Nothing to be done (all requested files are present and up to date).

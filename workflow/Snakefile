@@ -11,8 +11,9 @@ include: "rules/Snakemake_C4.smk"
 #include: "rules/splicing.smk"
 #include: "rules/quantification.smk"
 
-rule all:
-    input: all_input , "results/multiqc_report.html"
+# 20220719 commented out until QC steps added/needed
+#rule all_qc_report:
+#    input: all_input , "results/multiqc_report.html"
 
 if not os.path.exists("00log"):
     os.makedirs("00log")

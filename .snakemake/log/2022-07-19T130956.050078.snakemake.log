@@ -1,0 +1,5 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+NameError in line 96 of /Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/rules/Snakemake_C4.smk:
+name 'r' is not defined
+  File "/Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/Snakefile", line 5, in <module>
+  File "/Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/rules/Snakemake_C4.smk", line 96, in <module>

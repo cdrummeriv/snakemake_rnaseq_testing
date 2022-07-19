@@ -1,10 +1,24 @@
+# relative paths
 samples: config/SraRunTable_fraction_rna.csv
-star_index: /home/hayerk/data/index/GRCh38.p13/GENCODE_GRCh38.p13
-salmon_index: /home/hayerk/data/index/gencode/gencode.v30.transcripts_salmon
-blacklist: /home/hayerk/data/index/hg38-blacklist.v2.bed
-gff3: /home/hayerk/data/index/GRCh38.p13/gencode.v32.primary_assembly.annotation.gff3
-gtf: /home/hayerk/data/index/GRCh38.p13/gencode.v32.primary_assembly.annotation.gtf
-tmp_dir: /scr1/users/hayerk/tmp
-selected_genes: /mnt/isilon/thomas-tikhonenko_lab/data/index/selected_genes.bed
+
+# absolute paths
+## Local Runs
+star_index: "/Volumes/Bioinfo/index/GRCh38.p13/GENCODE_GRCh38.p13" # "STAR_genome" in Manu's code
+salmon_index: "/Volumes/Bioinfo/index/gencode/gencode.v30.transcripts_salmon" # "salmon_genome" in Manu's gencode
+blacklist: "/Volumes/Bioinfo/index/hg38-blacklist.v2.bed"
+gff3: "/Volumes/Bioinfo/index/GRCh38.p13/gencode.v32.primary_assembly.annotation.gff3"
+gtf: "/Volumes/Bioinfo/index/GRCh38.p13/gencode.v32.primary_assembly.annotation.gtf"
+tmp_dir: "/scr1/users/drummerc/tmp"
 single_end: False
 stranded: False
+
+## cluster
+#star_index: /home/hayerk/data/index/GRCh38.p13/GENCODE_GRCh38.p13
+#salmon_index: /home/hayerk/data/index/gencode/gencode.v30.transcripts_salmon
+#blacklist: /home/hayerk/data/index/hg38-blacklist.v2.bed
+#gff3: /home/hayerk/data/index/GRCh38.p13/gencode.v32.primary_assembly.annotation.gff3
+#gtf: /home/hayerk/data/index/GRCh38.p13/gencode.v32.primary_assembly.annotation.gtf
+#tmp_dir: /scr1/users/hayerk/tmp
+#selected_genes: /mnt/isilon/thomas-tikhonenko_lab/data/index/selected_genes.bed
+#single_end: False
+#stranded: False

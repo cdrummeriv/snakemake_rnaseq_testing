@@ -17,62 +17,52 @@ groups = pd.read_csv(config["samples"], sep =",", dtype = str).set_index("group"
 # 20220718 changed "files" to "results"
 rule all:
 	input:
-		expand('results/deltapsi_results/{comparison}.deltapsi.tsv',comparison=groups.Comparison),
+		# commented out below until ready for majiq and rmats comparisons
+		#expand('results/deltapsi_results/{comparison}.deltapsi.tsv',comparison=groups.Comparison)
 		expand("results/bam_results/{sample}_Aligned.sortedByCoord.out.bam", sample=samples.sample_name),
 		expand("results/salmon/{run}_quant/quant.sf",run=samples.Run)
 
-def get_raw_reads(wildcards):
-	return config["samples"][wildcards.sample]
-
-rule SRR_download:
-	input:
-		get_raw_reads
-	output:
-		expand("/Volumes/Bioinfo/raw_data/tmp/{{run}}_{num}.fastq.gz", num=[1,2])
-	conda:
-		"workflow/envs/SraTools.yaml"
-	threads: 10
-	params:
-		path="results/fastq_raw/"
-	shell:
-		"fastq-dump --gzip --split-3 -O {params.path} {input}"
-
-#rule SRR_convert:
-#	input:
-#		srr="results/fastq_results/{run}/{run}.sra"
+# rule SRR_download:
 #	params:
-#		path="results/fastq_results/"
+#		srr=lambda wildcards: samples.Run[samples.Run == wildcards.unit], unit=samples.Run,
+#		path="/Volumes/Bioinfo/raw_data/tmp/fastq_files/"
 #	output:
-#		expand("results/fastq_results/{{run}}_{num}.fastq.gz", num=[1,2])
+#		"results/fastq_files/{unit}/{unit}.sra"
 #	conda:
 #		"envs/SraTools.yaml"
-#	resources:
-#		cpu=1,
-#		mem=lambda wildcards, attempt: attempt * 4,
-#		time=360
+#	shell:
+#		"prefetch -O {params.path} {wildcards.unit}"
+
+# rule SRR_convert:
+#	input:
+#		srr="results/fastq_files/{unit}/{unit}.sra"
+#	params:
+#		path="results/fastq_files/"
+#	output:
+#		expand("results/fastq_files/{{unit}}_{num}.fastq.gz", num=[1,2])
+#	conda:
+#		"envs/SraTools.yaml"
 #	shell:
 #		"fastq-dump --gzip --split-3 -O {params.path} {input.srr}"
 
 
-
-#rule STAR_align:
-#	input:
-#		genome=config["STAR_genome"],
-#		results=lambda wildcards: expand("results/fastq_results/{run}_{num}.fastq.gz", run=samples.Run[samples.sample_name == wildcards.sample], num=[1,2])
-#	params:
-#		path="results/bam_results/{sample}_"
-#	resources:
-#		cpu=10,
-#		mem=lambda wildcards, attempt: attempt * 120
-#	output:
-#		"results/bam_results/{sample}_Aligned.sortedByCoord.out.bam"
-#	shell:
-#		"STAR --twopassMode Basic --genomeDir {input.genome} --outTmpKeep None "
-#		"--readresultsIn {input.results} --readresultsCommand zcat "
-#		"--runThreadN {resources.cpu} --outSAMtype BAM SortedByCoordinate "
-#		"--outFileNamePrefix {params.path} --alignSJoverhangMin 8 "
+rule STAR_align:
+	input:
+		genome=config["star_index"], # called STAR_genome in Manu's
+		results=lambda wildcards: expand("reads/{run}_{num}.fastq.gz", run=samples.Run[samples.sample_name == wildcards.sample], num=[1,2])
+	params:
+		path="results/bam_results/{sample}_"
+	resources:
+		cpu=10
+	output:
+		"results/bam_results/{sample}_Aligned.sortedByCoord.out.bam"
+	shell:
+		"STAR --twopassMode Basic --genomeDir {input.genome} --outTmpKeep None "
+		"--readresultsIn {input.results} --readresultsCommand zcat "
+		"--runThreadN {resources.cpu} --outSAMtype BAM SortedByCoordinate "
+		"--outFileNamePrefix {params.path} --alignSJoverhangMin 8 "
 #		"--limitBAMsortRAM {resources.mem}000000000 --outSAMattributes All "
-#		"--quantMode GeneCounts"
+		"--quantMode GeneCounts"
 
 # rule samtools_merge_bam:
 # 	input:
@@ -92,7 +82,7 @@ rule SRR_download:
 # 		"""
 
 
-r#ule samtools_index:
+#rule samtools_index:
 #	input:
 #		'results/bam_results/{sample}_Aligned.sortedByCoord.out.bam'
 #	output:

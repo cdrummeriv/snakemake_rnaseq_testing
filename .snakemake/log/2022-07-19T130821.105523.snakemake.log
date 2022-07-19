@@ -1,0 +1,6 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+AttributeError in line 20 of /Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/rules/Snakemake_C4.smk:
+'DataFrame' object has no attribute 'Comparison'
+  File "/Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/Snakefile", line 5, in <module>
+  File "/Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/rules/Snakemake_C4.smk", line 20, in <module>
+  File "/Users/drummerc/miniconda3/envs/snakemake/lib/python3.10/site-packages/pandas/core/generic.py", line 5575, in __getattr__

@@ -1,0 +1,4 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+CreateRuleException in line 14 of /Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/Snakefile:
+The name all is already used by another rule
+  File "/Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/Snakefile", line 14, in <module>

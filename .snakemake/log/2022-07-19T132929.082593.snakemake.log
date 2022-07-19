@@ -1,0 +1,3 @@
+SyntaxError in line 27 of /Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/rules/Snakemake_C4.smk:
+invalid syntax. Perhaps you forgot a comma?
+  File "/Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/Snakefile", line 5, in <module>

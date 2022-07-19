@@ -1,0 +1,4 @@
+Config file config/config.yaml is extended by additional config specified via the command line.
+NameError in line 15 of /Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/Snakefile:
+name 'all_input' is not defined
+  File "/Users/drummerc/GitHub/snakemake_rnaseq_testing/workflow/Snakefile", line 15, in <module>
