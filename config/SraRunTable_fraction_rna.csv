@@ -1,0 +1,3 @@
+Run,sample_name,group,Assay Type,AvgSpotLen,Bases,BioProject,BioSample,Bytes,Cell_type,Center Name,Consent,DATASTORE filetype,DATASTORE provider,DATASTORE region,Experiment,GEO_Accession (exp),Instrument,LibraryLayout,LibrarySelection,LibrarySource,Organism,Platform,ReleaseDate,Replicate,Sample Name,source_name,SRA Study,time_post_infection
+SRR4787051,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SRR4787050,,,,,,,,,,,,,,,,,,,,,,,,,,,,
